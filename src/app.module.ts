@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mongodb',
       url: process.env.MONGODB_CONNECTION_STRING,
@@ -14,7 +15,6 @@ import { UsersModule } from './users/users.module';
       useUnifiedTopology: true,
       useNewUrlParser: true,
     }),
-    ConfigModule.forRoot(),
     UsersModule,
   ],
   controllers: [AppController],
