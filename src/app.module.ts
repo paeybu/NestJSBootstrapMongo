@@ -3,8 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { FridgeitemsModule } from './fridgeitems/fridgeitems.module';
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mongodb',
       url: process.env.MONGODB_CONNECTION_STRING,
@@ -13,6 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       useUnifiedTopology: true,
       useNewUrlParser: true,
     }),
+    FridgeitemsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
